@@ -9,9 +9,10 @@ _.key
 _.mobileprovision
 _.orig.\*
 web-build/
+.env
 
 # Spirokit
-spirokit-core-v1.0.2.tgz
+spirokit-core-*.tgz
 
 # macOS
 .DS_Store

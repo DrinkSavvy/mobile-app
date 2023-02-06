@@ -1,3 +1,4 @@
+import React from "react"
 import {
   Center,
   VStack,
@@ -7,14 +8,15 @@ import {
   usePoppins,
   useSpiroKitTheme,
   Box,
-} from "@spirokit/core";
+} from "@spirokit/core"
+import { SUPABASE_ANON_KEY, SUPABASE_URL } from "@env"
 
-const myTheme = useSpiroKitTheme();
+const myTheme = useSpiroKitTheme()
 
 export default function App() {
-  const fontLoaded = usePoppins();
+  const fontLoaded = usePoppins()
 
-  if (!fontLoaded) return <></>;
+  if (!fontLoaded) return <></>
 
   return (
     <SpiroKitProvider theme={myTheme}>
@@ -26,10 +28,12 @@ export default function App() {
             resizeMode="contain"
             source={{ uri: "https://i.imgur.com/TvHaA0H.png" }}
           ></Image>
-          <TitleOne>Welcome to SpiroKit</TitleOne>
+          <TitleOne>
+            Welcome to SpiroKit {SUPABASE_ANON_KEY} {SUPABASE_URL}
+          </TitleOne>
         </VStack>
       </Center>
       <Box></Box>
     </SpiroKitProvider>
-  );
+  )
 }
