@@ -8,13 +8,14 @@ import {
   usePoppins,
   useSpiroKitTheme,
   Box,
-} from "@spirokit/core"
+} from "./spirokit-core-v0.0.2/src/index"
 import { SUPABASE_ANON_KEY, SUPABASE_URL } from "@env"
 
 const myTheme = useSpiroKitTheme()
 
 export default function App() {
   const fontLoaded = usePoppins()
+  console.log(SUPABASE_ANON_KEY)
 
   if (!fontLoaded) return <></>
 

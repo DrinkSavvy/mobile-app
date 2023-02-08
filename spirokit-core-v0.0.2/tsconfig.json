@@ -1,0 +1,39 @@
+{
+  "include": [
+    "./src"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowJs": false,
+    "jsx": "react-native",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "strict": true,
+    "paths": {
+      "@spirokit/core": [
+        "./src/index"
+      ]
+    },
+    "outDir": "lib/js",
+    "noEmit": false
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "lib/**/*",
+    "src/documentation/*"
+  ],
+  "extends": "expo/tsconfig.base"
+}
