@@ -8,7 +8,7 @@ import {
   usePoppins,
   useSpiroKitTheme,
   Box,
-} from "./spirokit-core-v0.0.2/src/index"
+} from "@spirokit/core"
 import { SUPABASE_ANON_KEY, SUPABASE_URL } from "@env"
 
 const myTheme = useSpiroKitTheme()
