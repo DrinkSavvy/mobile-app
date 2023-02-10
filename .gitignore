@@ -17,3 +17,6 @@ spirokit-core-*.tgz
 
 # macOS
 .DS_Store
+
+# VSCode
+.vscode/
