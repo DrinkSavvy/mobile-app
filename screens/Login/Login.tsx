@@ -12,12 +12,14 @@ export default function LoginScreen() {
               placeholder="Email"
               width="100%"
               marginBottom={2}
+              size="2xl"
               _focus={{ borderColor: "primary.500" }}
             />
             <Input
               placeholder="Password"
               width="100%"
               marginBottom={2}
+              size="2xl"
               _focus={{ borderColor: "primary.500" }}
             />
           </Box>
