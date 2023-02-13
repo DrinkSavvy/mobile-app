@@ -1,4 +1,4 @@
-import { Box, Center, Input, VStack } from "native-base"
+import { Box, Center, Input, VStack } from "@spirokit/core"
 import React from "react"
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
 
@@ -10,16 +10,12 @@ export default function LoginScreen() {
           <Box>
             <Input
               placeholder="Email"
-              width="100%"
-              marginBottom={2}
-              size="2xl"
+              _container={{ marginBottom: 2, width: "100%" }}
               _focus={{ borderColor: "primary.500" }}
             />
             <Input
               placeholder="Password"
-              width="100%"
-              marginBottom={2}
-              size="2xl"
+              _container={{ marginBottom: 2, width: "100%" }}
               _focus={{ borderColor: "primary.500" }}
             />
           </Box>
