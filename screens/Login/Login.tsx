@@ -1,6 +1,8 @@
-import { Box, Center, Input, VStack } from "@spirokit/core"
 import React from "react"
+
+import { Box, Button, Center, Input, VStack } from "@spirokit/core"
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
+import Bugsnag from "@bugsnag/expo"
 
 export default function LoginScreen() {
   return (
@@ -18,6 +20,13 @@ export default function LoginScreen() {
               _container={{ marginBottom: 2, width: "100%" }}
               _focus={{ borderColor: "primary.500" }}
             />
+            <Button
+              onPress={() => {
+                throw new Error("Test error")
+              }}
+            >
+              Login
+            </Button>
           </Box>
         </VStack>
       </Center>
