@@ -1,35 +1,47 @@
 import React from "react"
+import { SafeAreaView } from "react-native"
 
 import { Box, Button, Center, Input, VStack } from "@spirokit/core"
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
-import Bugsnag from "@bugsnag/expo"
+
+import { supabase } from "../../api/supabase"
+import { useAnalytics } from "../../hooks/useAnalytics"
 
 export default function LoginScreen() {
+  const [state, setState] = React.useState({
+    email: "",
+    password: "",
+  })
+
+  const { trackEvent } = useAnalytics()
+
   return (
-    <KeyboardAwareScrollView>
-      <Center flex={1}>
-        <VStack space={4} width="100%" maxWidth="400px">
-          <Box>
-            <Input
-              placeholder="Email"
-              _container={{ marginBottom: 2, width: "100%" }}
-              _focus={{ borderColor: "primary.500" }}
-            />
-            <Input
-              placeholder="Password"
-              _container={{ marginBottom: 2, width: "100%" }}
-              _focus={{ borderColor: "primary.500" }}
-            />
-            <Button
-              onPress={() => {
-                throw new Error("Test error")
-              }}
-            >
-              Login
-            </Button>
-          </Box>
-        </VStack>
-      </Center>
-    </KeyboardAwareScrollView>
+    <SafeAreaView style={{ flex: 1 }}>
+      <KeyboardAwareScrollView>
+        <Center flex={1} justifyContent="center" alignItems="center">
+          <VStack space={4} width="100%" maxWidth="400px">
+            <Box>
+              <Input
+                placeholder="Email"
+                _container={{ marginBottom: 2, width: "100%" }}
+                _focus={{ borderColor: "primary.500" }}
+              />
+              <Input
+                placeholder="Password"
+                _container={{ marginBottom: 2, width: "100%" }}
+                _focus={{ borderColor: "primary.500" }}
+              />
+              <Button
+                onPress={() => {
+                  trackEvent("Login")
+                }}
+              >
+                Login
+              </Button>
+            </Box>
+          </VStack>
+        </Center>
+      </KeyboardAwareScrollView>
+    </SafeAreaView>
   )
 }
