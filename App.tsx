@@ -5,7 +5,7 @@ import { init } from "@amplitude/analytics-react-native"
 import { SpiroKitProvider, usePoppins, useSpiroKitTheme } from "@spirokit/core"
 
 import { BUGSNAG_API_KEY, AMPLITUDE_API_KEY } from "@env"
-import Navigator from "./Navigator"
+import Navigator from "./Navigation"
 import { ErrorView } from "./components/ErrorBoundary"
 
 const myTheme = useSpiroKitTheme()

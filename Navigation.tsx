@@ -2,20 +2,24 @@ import React from "react"
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
-import LoginScreen from "./screens/Login/Login"
+import LoginScreen from "./screens/Login/LoginView"
 
-const Stack = createNativeStackNavigator()
+export type RootStackParamList = {
+  Login: undefined
+}
+
+const RootStack = createNativeStackNavigator<RootStackParamList>()
 
 export default function Navigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
+      <RootStack.Navigator>
+        <RootStack.Screen
           name="Login"
           component={LoginScreen}
           options={{ headerShown: false }}
         />
-      </Stack.Navigator>
+      </RootStack.Navigator>
     </NavigationContainer>
   )
 }

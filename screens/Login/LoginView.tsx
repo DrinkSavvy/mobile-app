@@ -8,13 +8,6 @@ import { supabase } from "../../api/supabase"
 import { useAnalytics } from "../../hooks/useAnalytics"
 
 export default function LoginScreen() {
-  const [state, setState] = React.useState({
-    email: "",
-    password: "",
-  })
-
-  const { trackEvent } = useAnalytics()
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <KeyboardAwareScrollView>
@@ -33,7 +26,7 @@ export default function LoginScreen() {
               />
               <Button
                 onPress={() => {
-                  trackEvent("Login")
+                  console.log("Login")
                 }}
               >
                 Login
