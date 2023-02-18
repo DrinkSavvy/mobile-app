@@ -4,10 +4,18 @@ import { SafeAreaView } from "react-native"
 import { Box, Button, Center, Input, VStack } from "@spirokit/core"
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
 
-import { supabase } from "../../api/supabase"
-import { useAnalytics } from "../../hooks/useAnalytics"
+import { LoginScreenProps } from "./types"
 
-export default function LoginScreen() {
+export default function LoginScreen({
+  handleLoginPress,
+  email,
+  password,
+  onChangeEmail,
+  onChangePassword,
+  onBlurEmail,
+  onBlurPassword,
+  navigateToRegister,
+}: LoginScreenProps) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <KeyboardAwareScrollView>

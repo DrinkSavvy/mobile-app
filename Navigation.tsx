@@ -2,10 +2,12 @@ import React from "react"
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
-import LoginScreen from "./screens/Login/LoginView"
+import Login from "./screens/Login/"
+import Home from "./screens/Home/"
 
 export type RootStackParamList = {
   Login: undefined
+  Home: undefined
 }
 
 const RootStack = createNativeStackNavigator<RootStackParamList>()
@@ -16,9 +18,14 @@ export default function Navigator() {
       <RootStack.Navigator>
         <RootStack.Screen
           name="Login"
-          component={LoginScreen}
+          component={Login}
           options={{ headerShown: false }}
         />
+        {/* <RootStack.Screen
+          name="Home"
+          component={Home}
+          // options={{ headerShown: false }}
+        /> */}
       </RootStack.Navigator>
     </NavigationContainer>
   )

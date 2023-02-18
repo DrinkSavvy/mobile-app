@@ -95,7 +95,7 @@ export default function useLogin(): LoginScreenProps {
       if (user && session) {
         setToken(session.access_token)
         trackEvent("login", { email: state.email.value })
-        // navigation.navigate("Home")
+        navigation.navigate("Home")
       }
     } else {
       Alert.alert("Invalid Login")
@@ -113,6 +113,6 @@ export default function useLogin(): LoginScreenProps {
     onChangePassword,
     onBlurEmail,
     onBlurPassword,
-    navigateToRegister: () => navigation.navigate("Login"),
+    navigateToRegister: () => navigation.navigate("Home"),
   }
 }
