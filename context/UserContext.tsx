@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useState } from 'react'
 
 export interface UserContextProps {
   token: string | undefined
@@ -7,7 +7,7 @@ export interface UserContextProps {
 }
 
 export const UserContext = createContext<UserContextProps>({
-  token: "",
+  token: '',
   setToken: (token: string) => {},
   logout: () => {},
 })
@@ -29,8 +29,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         token,
         setToken,
         logout,
-      }}
-    >
+      }}>
       {children}
     </UserContext.Provider>
   )

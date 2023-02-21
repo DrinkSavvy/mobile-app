@@ -1,4 +1,4 @@
-import { FormValue } from "@types";
+import { FormValue } from '@types'
 
 export interface LoginScreenProps {
   handleLoginPress: () => void
@@ -13,13 +13,13 @@ export interface LoginScreenProps {
 
 export interface LoginScreenState {
   email: {
-    value: string,
-    isValid: boolean,
+    value: string
+    isValid: boolean
     errorMessage: string | undefined
-  },
+  }
   password: {
-    value: string,
-    isValid: boolean,
+    value: string
+    isValid: boolean
     errorMessage: string | undefined
-  },
+  }
 }

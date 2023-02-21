@@ -1,6 +1,7 @@
-import Bugsnag from "@bugsnag/expo"
-import { init } from "@amplitude/analytics-react-native"
-import { SpiroKitProvider, useSpiroKitTheme } from "@spirokit/core"
+import { init } from '@amplitude/analytics-react-native'
+import Bugsnag from '@bugsnag/expo'
+import { ErrorView } from '@components/ErrorBoundary'
+import { BUGSNAG_API_KEY, AMPLITUDE_API_KEY } from '@env'
 import {
   useFonts,
   Inter_300Light,
@@ -9,55 +10,14 @@ import {
   Inter_600SemiBold,
   Inter_700Bold,
   Inter_800ExtraBold,
-} from "@expo-google-fonts/inter"
-
-import { BUGSNAG_API_KEY, AMPLITUDE_API_KEY } from "@env"
-import Navigator from "@navigation/Navigation"
-import { SPIROKIT_CONFIG } from "@utils/spirokit-config"
-
-const myTheme = useSpiroKitTheme({
-  config: {
-    colors: {
-      primary: "orange",
-      primaryGray: "warmGray",
-    },
-    fonts: {
-      body: "Inter",
-      heading: "Inter",
-    },
-    initialColorMode: "dark",
-    useSystemColorMode: true,
-  },
-  resources: {
-    fonts: {
-      Inter: {
-        light: {
-          normal: "Inter_Light",
-        },
-        regular: {
-          normal: "Inter",
-        },
-        medium: {
-          normal: "Inter_Medium",
-        },
-        semiBold: {
-          normal: "Inter_SemiBold",
-        },
-        bold: {
-          normal: "Inter_Bold",
-        },
-        extraBold: {
-          normal: "Inter_ExtraBold",
-        },
-      },
-    },
-  },
-})
-
-// TODO Add the ErrorBoundary to the app
-// const ErrorBoundary = Bugsnag.getPlugin("react")
+} from '@expo-google-fonts/inter'
+import Navigator from '@navigation/Navigation'
+import { SpiroKitProvider, useSpiroKitTheme } from '@spirokit/core'
+import { SPIROKIT_CONFIG } from '@utils/spirokit-config'
 
 export default function App() {
+  const myTheme = useSpiroKitTheme(SPIROKIT_CONFIG)
+
   const [fontsLoaded] = useFonts({
     Inter_Light: Inter_300Light,
     Inter: Inter_400Regular,
@@ -72,11 +32,15 @@ export default function App() {
     Bugsnag.start({ apiKey: BUGSNAG_API_KEY })
   }
 
+  const ErrorBoundary = Bugsnag.getPlugin('react')
+
   if (!fontsLoaded) return <></>
 
   return (
-    <SpiroKitProvider theme={myTheme}>
-      <Navigator />
-    </SpiroKitProvider>
+    <ErrorBoundary FallbackComponent={ErrorView}>
+      <SpiroKitProvider theme={myTheme}>
+        <Navigator />
+      </SpiroKitProvider>
+    </ErrorBoundary>
   )
 }

@@ -1,38 +1,38 @@
-import { Theme } from "@spirokit/core/typescript/theme/types"
+import { Theme } from '@spirokit/core/typescript/theme/types'
 
 export const SPIROKIT_CONFIG: Theme = {
   config: {
     colors: {
-      primary: "orange",
-      primaryGray: "warmGray",
+      primary: 'orange',
+      primaryGray: 'warmGray',
     },
     fonts: {
-      body: "Inter",
-      heading: "Inter",
+      body: 'Inter',
+      heading: 'Inter',
     },
-    initialColorMode: "dark",
+    initialColorMode: 'dark',
     useSystemColorMode: true,
   },
   resources: {
     fonts: {
       Inter: {
         light: {
-          normal: "Inter_Light",
+          normal: 'Inter_Light',
         },
         regular: {
-          normal: "Inter",
+          normal: 'Inter',
         },
         medium: {
-          normal: "Inter_Medium",
+          normal: 'Inter_Medium',
         },
         semiBold: {
-          normal: "Inter_SemiBold",
+          normal: 'Inter_SemiBold',
         },
         bold: {
-          normal: "Inter_Bold",
+          normal: 'Inter_Bold',
         },
         extraBold: {
-          normal: "Inter_ExtraBold",
+          normal: 'Inter_ExtraBold',
         },
       },
     },

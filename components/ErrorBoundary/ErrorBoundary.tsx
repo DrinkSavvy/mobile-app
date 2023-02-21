@@ -1,7 +1,7 @@
-import { Component } from "react"
-import { View, Text } from "react-native"
+import { Component } from 'react'
+import { View, Text } from 'react-native'
 
-class ErrorView extends Component {
+export default class ErrorView extends Component {
   render() {
     return (
       <View>
@@ -10,5 +10,3 @@ class ErrorView extends Component {
     )
   }
 }
-
-export { ErrorView }

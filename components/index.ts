@@ -1,3 +1,6 @@
-export { Screen } from "./Screen"
-export { Divider } from "./Divider"
-export { Button } from "./Button"
+export { Screen } from './Screen'
+export { Divider } from './Divider'
+export { Button } from './Button'
+export { Image } from './Image'
+export { Input } from './Input'
+export { ErrorView } from './ErrorBoundary'

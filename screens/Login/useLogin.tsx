@@ -1,35 +1,34 @@
-import { useState } from "react"
-import { Alert } from "react-native"
-import Bugsnag from "@bugsnag/expo"
-import { useNavigation } from "@react-navigation/native"
-import { NativeStackNavigationProp } from "@react-navigation/native-stack"
+import { supabase } from '@api/supabase'
+import Bugsnag from '@bugsnag/expo'
+import { useUserContext } from '@context/UserContext'
+import { useAnalytics } from '@hooks/useAnalytics'
+import useEmailValidator from '@hooks/useEmailValidator'
+import { RootStackParamList } from '@navigation/Navigation'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { useState } from 'react'
+import { Alert } from 'react-native'
 
-import { LoginScreenProps, LoginScreenState } from "./types"
-import { supabase } from "@api/supabase"
-import { RootStackParamList } from "@navigation/Navigation"
-import useEmailValidator from "@hooks/useEmailValidator"
-import { useUserContext } from "@context/UserContext"
-import { useAnalytics } from "@hooks/useAnalytics"
+import { LoginScreenProps, LoginScreenState } from './types'
 
 export default function useLogin(): LoginScreenProps {
   const [state, setState] = useState<LoginScreenState>({
     email: {
-      value: "",
+      value: '',
       isValid: false,
-      errorMessage: "",
+      errorMessage: '',
     },
     password: {
-      value: "",
+      value: '',
       isValid: false,
-      errorMessage: "",
+      errorMessage: '',
     },
   })
 
   const { trackEvent } = useAnalytics()
 
   const { setToken } = useUserContext()
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
   const onChangeEmail = (email: string) => {
     setState({
@@ -37,7 +36,7 @@ export default function useLogin(): LoginScreenProps {
       email: {
         value: email,
         isValid: useEmailValidator(email),
-        errorMessage: "",
+        errorMessage: '',
       },
     })
   }
@@ -48,8 +47,7 @@ export default function useLogin(): LoginScreenProps {
       email: {
         value: state.email.value,
         isValid: state.email.isValid,
-        errorMessage:
-          state.email.isValid === false ? "Invalid email" : undefined,
+        errorMessage: state.email.isValid === false ? 'Invalid email' : undefined,
       },
     })
   }
@@ -60,7 +58,7 @@ export default function useLogin(): LoginScreenProps {
       password: {
         value: password,
         isValid: password.length > 1,
-        errorMessage: "",
+        errorMessage: '',
       },
     })
   }
@@ -71,8 +69,7 @@ export default function useLogin(): LoginScreenProps {
       password: {
         value: state.password.value,
         isValid: state.password.isValid,
-        errorMessage:
-          state.password.value.length > 1 ? undefined : "Password is too short",
+        errorMessage: state.password.value.length > 1 ? undefined : 'Password is too short',
       },
     })
   }
@@ -89,16 +86,16 @@ export default function useLogin(): LoginScreenProps {
 
       if (error) {
         Bugsnag.notify(error)
-        Alert.alert("Error", error.message)
+        Alert.alert('Error', error.message)
       }
 
       if (user && session) {
         setToken(session.access_token)
-        trackEvent("login", { email: state.email.value })
-        navigation.navigate("Home")
+        trackEvent('login', { email: state.email.value })
+        navigation.navigate('Home')
       }
     } else {
-      Alert.alert("Invalid Login")
+      Alert.alert('Invalid Login')
     }
   }
 
@@ -113,6 +110,6 @@ export default function useLogin(): LoginScreenProps {
     onChangePassword,
     onBlurEmail,
     onBlurPassword,
-    navigateToRegister: () => navigation.navigate("Home"),
+    navigateToRegister: () => navigation.navigate('Home'),
   }
 }

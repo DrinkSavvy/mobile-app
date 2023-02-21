@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native"
+import { StyleSheet, View } from 'react-native'
 
 const Divider = () => {
   return <View style={styles.divider} />
@@ -7,7 +7,7 @@ const Divider = () => {
 const styles = StyleSheet.create({
   divider: {
     height: 1,
-    backgroundColor: "lightgray",
+    backgroundColor: 'lightgray',
     marginVertical: 10,
   },
 })

@@ -1,5 +1,5 @@
-import { SafeAreaView } from "react-native"
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
+import { SafeAreaView } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export const withHook = (
   hook: (props: any) => any,

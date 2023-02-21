@@ -4,4 +4,7 @@ export interface FormValue {
   errorMessage: string | undefined
 }
 
-export interface ApiResponse { token?: string; error?: string }
+export interface ApiResponse {
+  token?: string
+  error?: string
+}

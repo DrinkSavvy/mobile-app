@@ -1,1 +1,1 @@
-export { ErrorView } from "./ErrorBoundary"
+export { default as ErrorView } from './ErrorBoundary'
