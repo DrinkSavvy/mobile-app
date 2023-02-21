@@ -1,8 +1,10 @@
-import { withHook } from '@hooks/withHook'
+import { withHook } from '@hooks/index'
 
 import LoginView from './LoginView'
 import useLogin from './useLogin'
 
-const Login = withHook(useLogin, LoginView)
+const isScrollable = true
+
+const Login = withHook(useLogin, LoginView, isScrollable)
 
 export default Login

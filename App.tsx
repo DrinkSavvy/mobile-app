@@ -14,6 +14,7 @@ import {
 import Navigator from '@navigation/Navigation'
 import { SpiroKitProvider, useSpiroKitTheme } from '@spirokit/core'
 import { SPIROKIT_CONFIG } from '@utils/spirokit-config'
+import React from 'react'
 
 export default function App() {
   const myTheme = useSpiroKitTheme(SPIROKIT_CONFIG)
@@ -32,7 +33,7 @@ export default function App() {
     Bugsnag.start({ apiKey: BUGSNAG_API_KEY })
   }
 
-  const ErrorBoundary = Bugsnag.getPlugin('react')
+  const ErrorBoundary = Bugsnag.getPlugin('react').createErrorBoundary(React)
 
   if (!fontsLoaded) return <></>
 

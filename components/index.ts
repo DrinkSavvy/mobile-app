@@ -1,4 +1,3 @@
-export { Screen } from './Screen'
 export { Divider } from './Divider'
 export { Button } from './Button'
 export { Image } from './Image'

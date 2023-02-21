@@ -1,8 +1,7 @@
 import { supabase } from '@api/supabase'
 import Bugsnag from '@bugsnag/expo'
 import { useUserContext } from '@context/UserContext'
-import { useAnalytics } from '@hooks/useAnalytics'
-import useEmailValidator from '@hooks/useEmailValidator'
+import { useAnalytics, useEmailValidator } from '@hooks/index'
 import { RootStackParamList } from '@navigation/Navigation'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -26,6 +25,7 @@ export default function useLogin(): LoginScreenProps {
   })
 
   const { trackEvent } = useAnalytics()
+  const { validateEmail } = useEmailValidator()
 
   const { setToken } = useUserContext()
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
@@ -35,7 +35,7 @@ export default function useLogin(): LoginScreenProps {
       ...state,
       email: {
         value: email,
-        isValid: useEmailValidator(email),
+        isValid: validateEmail(email),
         errorMessage: '',
       },
     })

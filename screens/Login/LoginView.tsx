@@ -1,4 +1,4 @@
-import { Screen, Divider, Button, Image, Input } from '@components/index'
+import { Divider, Button, Image, Input } from '@components/index'
 import { Center, VStack } from '@spirokit/core'
 
 import { LoginScreenProps } from './types'
@@ -14,42 +14,40 @@ export default function LoginScreen({
   navigateToRegister,
 }: LoginScreenProps) {
   return (
-    <Screen isScrollable>
-      <Center flex={1} height="100%" width="100%">
-        <Image
-          alt="mixer logo"
-          width="256"
-          height="256"
-          resizeMode="cover"
-          source={require('@assets/adaptive-icon.png')}
-          marginBottom={4}
+    <Center flex={1} height="100%" width="100%">
+      <Image
+        alt="mixer logo"
+        width="256"
+        height="256"
+        resizeMode="cover"
+        source={require('@assets/adaptive-icon.png')}
+        marginBottom={4}
+      />
+      <VStack space={4} width="100%" maxWidth="400px">
+        <Input
+          placeholder="Email"
+          value={email.value}
+          onChangeText={onChangeEmail}
+          onBlur={onBlurEmail}
+          _container={{ width: '100%' }}
+          _focus={{ borderColor: 'primary.500' }}
         />
-        <VStack space={4} width="100%" maxWidth="400px">
-          <Input
-            placeholder="Email"
-            value={email.value}
-            onChangeText={onChangeEmail}
-            onBlur={onBlurEmail}
-            _container={{ width: '100%' }}
-            _focus={{ borderColor: 'primary.500' }}
-          />
-          <Input
-            placeholder="Password"
-            value={password.value}
-            onChangeText={onChangePassword}
-            onBlur={onBlurPassword}
-            _container={{ width: '100%' }}
-            _focus={{ borderColor: 'primary.500' }}
-          />
-          <Divider />
-          <Button onPress={handleLoginPress} marginBottom={2} size="md">
-            Login
-          </Button>
-          <Button variant="secondary" onPress={navigateToRegister} size="md">
-            Register
-          </Button>
-        </VStack>
-      </Center>
-    </Screen>
+        <Input
+          placeholder="Password"
+          value={password.value}
+          onChangeText={onChangePassword}
+          onBlur={onBlurPassword}
+          _container={{ width: '100%' }}
+          _focus={{ borderColor: 'primary.500' }}
+        />
+        <Divider />
+        <Button onPress={handleLoginPress} marginBottom={2} size="md">
+          Login
+        </Button>
+        <Button variant="secondary" onPress={navigateToRegister} size="md">
+          Register
+        </Button>
+      </VStack>
+    </Center>
   )
 }

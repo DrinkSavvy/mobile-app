@@ -8,11 +8,11 @@ export const withHook = (
 ) => {
   if (isScrollable) {
     return (props: any) => (
-      <KeyboardAwareScrollView>
-        <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <KeyboardAwareScrollView>
           <Component {...props} {...hook(props)} />
-        </SafeAreaView>
-      </KeyboardAwareScrollView>
+        </KeyboardAwareScrollView>
+      </SafeAreaView>
     )
   }
   return (props: any) => (

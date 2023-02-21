@@ -1,8 +1,8 @@
-import { withHook } from '@hooks/withHook'
+import { withHook } from '@hooks/withHook/withHook'
 
 import HomeView from './HomeView'
 import useHome from './useHome'
 
-const Login = withHook(useHome, HomeView)
+const Home = withHook(useHome, HomeView)
 
-export default Login
+export default Home
