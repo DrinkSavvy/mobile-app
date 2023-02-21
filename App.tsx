@@ -30,7 +30,7 @@ export default function App() {
   })
 
   init(AMPLITUDE_API_KEY)
-  if (!Bugsnag.isStarted()) {
+  if (!Bugsnag.isStarted() && !__DEV__) {
     Bugsnag.start({ apiKey: BUGSNAG_API_KEY })
   }
 
