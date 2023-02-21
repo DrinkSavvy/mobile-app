@@ -1,6 +1,5 @@
-import React from "react"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
-import { RootStackParamList } from "../../Navigation"
+import { RootStackParamList } from "@navigation/Navigation"
 import { Center, Text } from "@spirokit/core"
 
 export default function HomeScreen({

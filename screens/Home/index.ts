@@ -1,4 +1,4 @@
-import { withHook } from "../../hooks/withHook"
+import { withHook } from "@hooks/withHook"
 import HomeView from "./HomeView"
 import useHome from "./useHome"
 

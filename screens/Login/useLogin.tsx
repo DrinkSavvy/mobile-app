@@ -1,15 +1,15 @@
 import { useState } from "react"
 import { Alert } from "react-native"
-import Bugsnag, { NotifiableError } from "@bugsnag/expo"
+import Bugsnag from "@bugsnag/expo"
 import { useNavigation } from "@react-navigation/native"
 import { NativeStackNavigationProp } from "@react-navigation/native-stack"
 
 import { LoginScreenProps, LoginScreenState } from "./types"
-import { supabase } from "../../api/supabase"
-import { RootStackParamList } from "../../Navigation"
-import useEmailValidator from "../../hooks/useEmailValidator"
-import { useUserContext } from "../../context/UserContext"
-import { useAnalytics } from "../../hooks/useAnalytics"
+import { supabase } from "@api/supabase"
+import { RootStackParamList } from "@navigation/Navigation"
+import useEmailValidator from "@hooks/useEmailValidator"
+import { useUserContext } from "@context/UserContext"
+import { useAnalytics } from "@hooks/useAnalytics"
 
 export default function useLogin(): LoginScreenProps {
   const [state, setState] = useState<LoginScreenState>({

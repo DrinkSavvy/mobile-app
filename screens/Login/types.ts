@@ -1,4 +1,4 @@
-import { FormValue } from "../../types";
+import { FormValue } from "@types";
 
 export interface LoginScreenProps {
   handleLoginPress: () => void

@@ -1,9 +1,8 @@
-import React from "react"
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
-import Login from "./screens/Login/"
-import Home from "./screens/Home/"
+import Login from "@screens/Login"
+import Home from "@screens/Home"
 
 export type RootStackParamList = {
   Login: undefined
@@ -21,11 +20,7 @@ export default function Navigator() {
           component={Login}
           options={{ headerShown: false }}
         />
-        {/* <RootStack.Screen
-          name="Home"
-          component={Home}
-          // options={{ headerShown: false }}
-        /> */}
+        <RootStack.Screen name="Home" component={Home} />
       </RootStack.Navigator>
     </NavigationContainer>
   )

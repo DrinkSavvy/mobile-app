@@ -1,7 +1,7 @@
-import React from "react"
+import { Component } from "react"
 import { View, Text } from "react-native"
 
-class ErrorView extends React.Component {
+class ErrorView extends Component {
   render() {
     return (
       <View>
