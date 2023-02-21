@@ -1,6 +1,7 @@
 import { Divider, Button, Image, Input } from '@components/index'
 import { Center, VStack } from '@spirokit/core'
 
+import { inputBorderStyle, inputContainerStyle } from './Login.styles'
 import { LoginScreenProps } from './types'
 
 export default function LoginScreen({
@@ -29,16 +30,16 @@ export default function LoginScreen({
           value={email.value}
           onChangeText={onChangeEmail}
           onBlur={onBlurEmail}
-          _container={{ width: '100%' }}
-          _focus={{ borderColor: 'primary.500' }}
+          _container={inputContainerStyle}
+          _focus={inputBorderStyle}
         />
         <Input
           placeholder="Password"
           value={password.value}
           onChangeText={onChangePassword}
           onBlur={onBlurPassword}
-          _container={{ width: '100%' }}
-          _focus={{ borderColor: 'primary.500' }}
+          _container={inputContainerStyle}
+          _focus={inputBorderStyle}
         />
         <Divider />
         <Button onPress={handleLoginPress} marginBottom={2} size="md">

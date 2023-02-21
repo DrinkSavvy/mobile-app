@@ -1,6 +1,7 @@
 import { init } from '@amplitude/analytics-react-native'
 import Bugsnag from '@bugsnag/expo'
 import { ErrorView } from '@components/ErrorBoundary'
+import { ProviderWrapper } from '@context/ProviderWrapper'
 import { BUGSNAG_API_KEY, AMPLITUDE_API_KEY } from '@env'
 import {
   useFonts,
@@ -40,7 +41,9 @@ export default function App() {
   return (
     <ErrorBoundary FallbackComponent={ErrorView}>
       <SpiroKitProvider theme={myTheme}>
-        <Navigator />
+        <ProviderWrapper>
+          <Navigator />
+        </ProviderWrapper>
       </SpiroKitProvider>
     </ErrorBoundary>
   )

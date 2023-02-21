@@ -1,4 +1,5 @@
 import { FormValue } from '@types'
+import { Colors } from '@utils/spirokit-config'
 
 export interface LoginScreenProps {
   handleLoginPress: () => void
@@ -9,6 +10,10 @@ export interface LoginScreenProps {
   onBlurEmail: () => void
   onBlurPassword: () => void
   navigateToRegister: () => void
+}
+
+export interface InputFocusBorder {
+  borderColor: Colors
 }
 
 export interface LoginScreenState {

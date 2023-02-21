@@ -8,7 +8,9 @@ export interface UserContextProps {
 
 export const UserContext = createContext<UserContextProps>({
   token: '',
-  setToken: (token: string) => {},
+  setToken: (token: string) => {
+    console.log(token)
+  },
   logout: () => {},
 })
 

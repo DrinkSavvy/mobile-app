@@ -1,6 +1,6 @@
 import { supabase } from '@api/supabase'
 import Bugsnag from '@bugsnag/expo'
-import { useUserContext } from '@context/UserContext'
+import { useUserContext } from '@context/index'
 import { useAnalytics, useEmailValidator } from '@hooks/index'
 import { RootStackParamList } from '@navigation/Navigation'
 import { useNavigation } from '@react-navigation/native'
