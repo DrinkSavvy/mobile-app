@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mixer",
-    "slug": "mixer",
+    "name": "DrinkSavvy",
+    "slug": "com.drinksavvy.app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

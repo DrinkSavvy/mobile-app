@@ -17,7 +17,7 @@ export default function LoginScreen({
   return (
     <Center flex={1} height="100%" width="100%">
       <Image
-        alt="mixer logo"
+        alt="DrinkSavvy logo"
         width="256"
         height="256"
         resizeMode="cover"
