@@ -4,6 +4,9 @@ import { Center, VStack } from '@spirokit/core'
 import { inputBorderStyle, inputContainerStyle } from './Login.styles'
 import { LoginScreenProps } from './types'
 
+// const blurhash =
+//   '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj['
+
 export default function LoginScreen({
   handleLoginPress,
   email,
@@ -24,6 +27,17 @@ export default function LoginScreen({
         source={require('@assets/adaptive-icon.png')}
         marginBottom={4}
       />
+      {/* <Image
+        placeholder={blurhash}
+        contentFit="cover"
+        transition={1000}
+        style={{
+          width: 256,
+          height: 256,
+          marginBottom: 4,
+        }}
+        source={require('@assets/adaptive-icon.png')}
+      /> */}
       <VStack space={4} width="100%" maxWidth="400px">
         <Input
           placeholder="Email"
