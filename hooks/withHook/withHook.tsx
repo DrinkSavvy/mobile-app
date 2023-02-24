@@ -1,15 +1,16 @@
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView, ViewStyle } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export const withHook = (
   hook: (props: any) => any,
   Component: React.ComponentType<any>,
-  isScrollable = false
+  isScrollable = false,
+  style?: ViewStyle
 ) => {
   if (isScrollable) {
     return (props: any) => (
       <SafeAreaView style={{ flex: 1 }}>
-        <KeyboardAwareScrollView>
+        <KeyboardAwareScrollView contentContainerStyle={style}>
           <Component {...props} {...hook(props)} />
         </KeyboardAwareScrollView>
       </SafeAreaView>

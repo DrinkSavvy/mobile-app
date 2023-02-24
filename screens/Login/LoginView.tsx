@@ -1,11 +1,12 @@
-import { Divider, Button, Image, Input } from '@components/index'
+import { Divider, Button, Input } from '@components/index'
 import { Center, VStack } from '@spirokit/core'
+import { Image } from 'expo-image'
 
 import { inputBorderStyle, inputContainerStyle } from './Login.styles'
 import { LoginScreenProps } from './types'
 
-// const blurhash =
-//   '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj['
+const blurhash =
+  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj['
 
 export default function LoginScreen({
   handleLoginPress,
@@ -20,14 +21,6 @@ export default function LoginScreen({
   return (
     <Center flex={1} height="100%" width="100%">
       <Image
-        alt="DrinkSavvy logo"
-        width="256"
-        height="256"
-        resizeMode="cover"
-        source={require('@assets/adaptive-icon.png')}
-        marginBottom={4}
-      />
-      {/* <Image
         placeholder={blurhash}
         contentFit="cover"
         transition={1000}
@@ -37,7 +30,7 @@ export default function LoginScreen({
           marginBottom: 4,
         }}
         source={require('@assets/adaptive-icon.png')}
-      /> */}
+      />
       <VStack space={4} width="100%" maxWidth="400px">
         <Input
           placeholder="Email"
