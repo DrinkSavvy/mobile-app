@@ -1,6 +1,5 @@
 import { init } from '@amplitude/analytics-react-native'
 import Bugsnag from '@bugsnag/expo'
-import { ErrorView } from '@components/ErrorBoundary'
 import { ProviderWrapper } from '@context/ProviderWrapper'
 import { BUGSNAG_API_KEY, AMPLITUDE_API_KEY } from '@env'
 import {
@@ -15,7 +14,6 @@ import {
 import Navigator from '@navigation/Navigation'
 import { SpiroKitProvider, useSpiroKitTheme } from '@spirokit/core'
 import { SPIROKIT_CONFIG } from '@utils/spirokit-config'
-import React from 'react'
 
 export default function App() {
   const myTheme = useSpiroKitTheme(SPIROKIT_CONFIG)
@@ -34,17 +32,13 @@ export default function App() {
     Bugsnag.start({ apiKey: BUGSNAG_API_KEY })
   }
 
-  const ErrorBoundary = Bugsnag.getPlugin('react').createErrorBoundary(React)
-
   if (!fontsLoaded) return <></>
 
   return (
-    <ErrorBoundary FallbackComponent={ErrorView}>
-      <SpiroKitProvider theme={myTheme}>
-        <ProviderWrapper>
-          <Navigator />
-        </ProviderWrapper>
-      </SpiroKitProvider>
-    </ErrorBoundary>
+    <SpiroKitProvider theme={myTheme}>
+      <ProviderWrapper>
+        <Navigator />
+      </ProviderWrapper>
+    </SpiroKitProvider>
   )
 }
