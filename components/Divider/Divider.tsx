@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: 'lightgray',
     marginVertical: 10,
+    width: '100%',
   },
 })
 

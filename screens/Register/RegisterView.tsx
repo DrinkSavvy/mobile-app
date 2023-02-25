@@ -19,7 +19,7 @@ export default function LoginScreen({
   navigateToRegister,
 }: LoginScreenProps) {
   return (
-    <Center flex={1} height="100%" width="100%">
+    <VStack space={4} width="100%" height="100%" maxWidth="400px">
       <Image
         placeholder={blurhash}
         contentFit="cover"
@@ -27,35 +27,34 @@ export default function LoginScreen({
         style={{
           width: 256,
           height: 256,
-          marginBottom: 4,
+          marginBottom: 16,
         }}
         source={require('@assets/adaptive-icon.png')}
       />
-      <VStack space={4} width="100%" maxWidth="400px">
-        <Input
-          placeholder="Email"
-          value={email.value}
-          onChangeText={onChangeEmail}
-          onBlur={onBlurEmail}
-          _container={inputContainerStyle}
-          _focus={inputBorderStyle}
-        />
-        <Input
-          placeholder="Password"
-          value={password.value}
-          onChangeText={onChangePassword}
-          onBlur={onBlurPassword}
-          _container={inputContainerStyle}
-          _focus={inputBorderStyle}
-        />
-        <Divider />
-        <Button onPress={handleLoginPress} marginBottom={2} size="md">
-          Login
-        </Button>
-        <Button variant="secondary" onPress={navigateToRegister} size="md">
-          Register
-        </Button>
-      </VStack>
-    </Center>
+      <Divider />
+      <Input
+        placeholder="Email"
+        value={email.value}
+        onChangeText={onChangeEmail}
+        onBlur={onBlurEmail}
+        _container={inputContainerStyle}
+        _focus={inputBorderStyle}
+      />
+      <Input
+        placeholder="Password"
+        value={password.value}
+        onChangeText={onChangePassword}
+        onBlur={onBlurPassword}
+        _container={inputContainerStyle}
+        _focus={inputBorderStyle}
+      />
+      <Divider />
+      <Button onPress={handleLoginPress} marginBottom={2} size="md">
+        Login
+      </Button>
+      <Button variant="secondary" onPress={navigateToRegister} size="md">
+        Register
+      </Button>
+    </VStack>
   )
 }
