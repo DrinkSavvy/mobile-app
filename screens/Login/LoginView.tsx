@@ -10,12 +10,9 @@ const blurhash =
 
 export default function LoginScreen({
   handleLoginPress,
-  email,
-  password,
-  onChangeEmail,
-  onChangePassword,
-  onBlurEmail,
-  onBlurPassword,
+  phone,
+  onChangePhone,
+  onBlurPhone,
   navigateToRegister,
 }: LoginScreenProps) {
   return (
@@ -32,18 +29,11 @@ export default function LoginScreen({
         source={require('@assets/adaptive-icon.png')}
       />
       <Input
-        placeholder="Email"
-        value={email.value}
-        onChangeText={onChangeEmail}
-        onBlur={onBlurEmail}
-        _container={inputContainerStyle}
-        _focus={inputBorderStyle}
-      />
-      <Input
-        placeholder="Password"
-        value={password.value}
-        onChangeText={onChangePassword}
-        onBlur={onBlurPassword}
+        placeholder="Phone Number"
+        value={phone.value}
+        onChangeText={onChangePhone}
+        keyboardType="number-pad"
+        onBlur={onBlurPhone}
         _container={inputContainerStyle}
         _focus={inputBorderStyle}
       />

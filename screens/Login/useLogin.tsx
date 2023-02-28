@@ -1,7 +1,7 @@
 import { supabase } from '@api/supabase'
 import Bugsnag from '@bugsnag/expo'
 import { useUserContext } from '@context/index'
-import { useAnalytics, useEmailValidator } from '@hooks/index'
+import { useAnalytics } from '@hooks/index'
 import { RootStackParamList } from '@navigation/Navigation'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -12,12 +12,7 @@ import { LoginScreenProps, LoginScreenState } from './types'
 
 export default function useLogin(): LoginScreenProps {
   const [state, setState] = useState<LoginScreenState>({
-    email: {
-      value: '',
-      isValid: false,
-      errorMessage: '',
-    },
-    password: {
+    phone: {
       value: '',
       isValid: false,
       errorMessage: '',
@@ -25,63 +20,39 @@ export default function useLogin(): LoginScreenProps {
   })
 
   const { trackEvent } = useAnalytics()
-  const { validateEmail } = useEmailValidator()
 
   const { setToken } = useUserContext()
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
-  const onChangeEmail = (email: string) => {
+  const onChangePhone = (phone: string) => {
     setState({
       ...state,
-      email: {
-        value: email,
-        isValid: validateEmail(email),
+      phone: {
+        value: phone,
+        isValid: !(phone.length < 10),
         errorMessage: '',
       },
     })
   }
 
-  const onBlurEmail = () => {
+  const onBlurPhone = () => {
     setState({
       ...state,
-      email: {
-        value: state.email.value,
-        isValid: state.email.isValid,
-        errorMessage: state.email.isValid === false ? 'Invalid email' : undefined,
-      },
-    })
-  }
-
-  const onChangePassword = (password: string) => {
-    setState({
-      ...state,
-      password: {
-        value: password,
-        isValid: password.length > 1,
-        errorMessage: '',
-      },
-    })
-  }
-
-  const onBlurPassword = () => {
-    setState({
-      ...state,
-      password: {
-        value: state.password.value,
-        isValid: state.password.isValid,
-        errorMessage: state.password.value.length > 1 ? undefined : 'Password is too short',
+      phone: {
+        value: state.phone.value,
+        isValid: state.phone.isValid,
+        errorMessage: state.phone.isValid === false ? 'Invalid Phone Number' : undefined,
       },
     })
   }
 
   const handleLoginPress = async () => {
-    if (state.email.isValid && state.password.isValid) {
+    if (state.phone.isValid) {
       const {
         data: { user, session },
         error,
-      } = await supabase.auth.signInWithPassword({
-        email: state.email.value,
-        password: state.password.value,
+      } = await supabase.auth.signInWithOtp({
+        phone: '+1' + state.phone.value,
       })
 
       if (error) {
@@ -91,7 +62,7 @@ export default function useLogin(): LoginScreenProps {
 
       if (user && session) {
         setToken(session.access_token)
-        trackEvent('login', { email: state.email.value })
+        trackEvent('login', { phone: state.phone.value })
         navigation.navigate('Home')
       }
     } else {
@@ -99,17 +70,13 @@ export default function useLogin(): LoginScreenProps {
     }
   }
 
-  const email = state.email
-  const password = state.password
+  const phone = state.phone
 
   return {
     handleLoginPress,
-    email,
-    password,
-    onChangeEmail,
-    onChangePassword,
-    onBlurEmail,
-    onBlurPassword,
+    phone,
+    onChangePhone,
+    onBlurPhone,
     navigateToRegister: () => navigation.navigate('Home'),
   }
 }

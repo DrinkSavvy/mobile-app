@@ -3,12 +3,9 @@ import { Colors } from '@utils/spirokit-config'
 
 export interface LoginScreenProps {
   handleLoginPress: () => void
-  email: FormValue
-  password: FormValue
-  onChangeEmail: (email: string) => void
-  onChangePassword: (password: string) => void
-  onBlurEmail: () => void
-  onBlurPassword: () => void
+  phone: FormValue
+  onChangePhone: (phone: string) => void
+  onBlurPhone: () => void
   navigateToRegister: () => void
 }
 
@@ -17,12 +14,7 @@ export interface InputFocusBorder {
 }
 
 export interface LoginScreenState {
-  email: {
-    value: string
-    isValid: boolean
-    errorMessage: string | undefined
-  }
-  password: {
+  phone: {
     value: string
     isValid: boolean
     errorMessage: string | undefined

@@ -1,8 +1,8 @@
 import { Divider, Button, Input } from '@components/index'
-import { Center, VStack } from '@spirokit/core'
+import { VStack } from '@spirokit/core'
 import { Image } from 'expo-image'
 
-import { inputBorderStyle, inputContainerStyle } from './Login.styles'
+import { inputBorderStyle, inputContainerStyle } from './Register.styles'
 import { LoginScreenProps } from './types'
 
 const blurhash =
