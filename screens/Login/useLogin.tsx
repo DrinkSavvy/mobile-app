@@ -1,6 +1,5 @@
 import { supabase } from '@api/supabase'
 import Bugsnag from '@bugsnag/expo'
-import { useUserContext } from '@context/index'
 import { useAnalytics } from '@hooks/index'
 import { RootStackParamList } from '@navigation/Navigation'
 import { useNavigation } from '@react-navigation/native'
@@ -18,10 +17,9 @@ export default function useLogin(): LoginScreenProps {
       errorMessage: '',
     },
   })
+  const phone = state.phone
 
   const { trackEvent } = useAnalytics()
-
-  const { setToken } = useUserContext()
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
   const onChangePhone = (phone: string) => {
@@ -39,38 +37,34 @@ export default function useLogin(): LoginScreenProps {
     setState({
       ...state,
       phone: {
-        value: state.phone.value,
-        isValid: state.phone.isValid,
-        errorMessage: state.phone.isValid === false ? 'Invalid Phone Number' : undefined,
+        value: phone.value,
+        isValid: phone.isValid,
+        errorMessage: phone.isValid === false ? 'Invalid Phone Number' : undefined,
       },
     })
   }
 
   const handleLoginPress = async () => {
-    if (state.phone.isValid) {
-      const {
-        data: { user, session },
-        error,
-      } = await supabase.auth.signInWithOtp({
-        phone: '+1' + state.phone.value,
+    if (phone.isValid) {
+      const response = await supabase.auth.signInWithOtp({
+        phone: '+1' + phone.value,
       })
 
-      if (error) {
-        Bugsnag.notify(error)
-        Alert.alert('Error', error.message)
+      console.log(response)
+
+      if (response.error) {
+        Bugsnag.notify(response.error)
+        Alert.alert('Error', response.error.message)
       }
 
-      if (user && session) {
-        setToken(session.access_token)
-        trackEvent('login', { phone: state.phone.value })
-        navigation.navigate('Home')
+      if (response.data.user) {
+        trackEvent('entered phone', { phone: phone.value })
+        navigation.navigate('ConfirmCode', { phone: phone.value })
       }
     } else {
       Alert.alert('Invalid Login')
     }
   }
-
-  const phone = state.phone
 
   return {
     handleLoginPress,

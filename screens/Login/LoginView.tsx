@@ -39,10 +39,7 @@ export default function LoginScreen({
       />
       <Divider />
       <Button onPress={handleLoginPress} marginBottom={2} size="md" width="100%">
-        Login
-      </Button>
-      <Button variant="secondary" onPress={navigateToRegister} size="md" width="100%">
-        Register
+        Enter
       </Button>
     </VStack>
   )
