@@ -17,7 +17,7 @@ export default function LoginScreen({
 }: LoginScreenProps) {
   return (
     <VStack space={4} width="100%" height="100%" maxWidth="400px" alignItems="center">
-      <Image
+      {/* <Image
         placeholder={blurhash}
         contentFit="cover"
         transition={1000}
@@ -27,7 +27,7 @@ export default function LoginScreen({
           marginBottom: 16,
         }}
         source={require('@assets/adaptive-icon.png')}
-      />
+      /> */}
       <Input
         placeholder="Phone Number"
         value={phone.value}

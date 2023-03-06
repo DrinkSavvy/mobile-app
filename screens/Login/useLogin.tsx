@@ -1,6 +1,5 @@
 import { supabase } from '@api/supabase'
-import Bugsnag from '@bugsnag/expo'
-import { useAnalytics } from '@hooks/index'
+import { useAnalytics, useErrorNotify } from '@hooks/index'
 import { RootStackParamList } from '@navigation/Navigation'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -20,6 +19,8 @@ export default function useLogin(): LoginScreenProps {
   const phone = state.phone
 
   const { trackEvent } = useAnalytics()
+  const { handleError } = useErrorNotify()
+
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
   const onChangePhone = (phone: string) => {
@@ -46,19 +47,15 @@ export default function useLogin(): LoginScreenProps {
 
   const handleLoginPress = async () => {
     if (phone.isValid) {
-      const response = await supabase.auth.signInWithOtp({
+      const signInResponse = await supabase.auth.signInWithOtp({
         phone: '+1' + phone.value,
       })
 
-      console.log(response)
-
-      if (response.error) {
-        Bugsnag.notify(response.error)
-        Alert.alert('Error', response.error.message)
-      }
-
-      if (response.data.user) {
-        trackEvent('entered phone', { phone: phone.value })
+      if (signInResponse.error) {
+        handleError(signInResponse.error)
+        Alert.alert('Error', signInResponse.error.message)
+      } else {
+        trackEvent('sign in', { phone: phone.value })
         navigation.navigate('ConfirmCode', { phone: phone.value })
       }
     } else {

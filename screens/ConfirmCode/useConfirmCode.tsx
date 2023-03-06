@@ -1,7 +1,6 @@
 import { supabase } from '@api/supabase'
-import Bugsnag from '@bugsnag/expo'
 import { useUserContext } from '@context/index'
-import { useAnalytics } from '@hooks/index'
+import { useAnalytics, useErrorNotify } from '@hooks/index'
 import { RootStackParamList } from '@navigation/Navigation'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -17,6 +16,7 @@ export default function useConfirmCode(): ConfirmCodeScreenProps {
   const code = state.code
 
   const { trackEvent } = useAnalytics()
+  const { handleError } = useErrorNotify()
 
   const { setToken } = useUserContext()
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
@@ -41,7 +41,7 @@ export default function useConfirmCode(): ConfirmCodeScreenProps {
       })
 
       if (error) {
-        Bugsnag.notify(error)
+        handleError(error)
         Alert.alert('Error', error.message)
       }
 
